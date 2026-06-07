@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mahli Heating &amp; Cooling 24/7 — York Region's Trusted HVAC Experts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;color:#1f2937;background:#fffdf7;overflow-x:hidden;}
+
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+    @keyframes shimmer{0%{background-position:-400% 0}100%{background-position:400% 0}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes glowPink{0%,100%{box-shadow:0 0 25px rgba(236,72,153,.25)}50%{box-shadow:0 0 50px rgba(236,72,153,.5)}}
+    @keyframes glowGreen{0%,100%{box-shadow:0 0 22px rgba(34,197,94,.22)}50%{box-shadow:0 0 48px rgba(34,197,94,.45)}}
+    @keyframes ember{0%{transform:translateY(0) translateX(0) scale(1);opacity:.85}100%{transform:translateY(-120px) translateX(var(--ex,15px)) scale(.15);opacity:0}}
+    @keyframes ripple{0%{transform:scale(.7);opacity:.6}100%{transform:scale(2.8);opacity:0}}
+    @keyframes drift{0%,100%{transform:translateX(0) rotate(0)}50%{transform:translateX(18px) rotate(3deg)}}
+    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+
+    /* ANNOUNCE */
+    .announce-bar{background:linear-gradient(90deg,#ec4899,#f472b6,#fb7185,#f472b6,#ec4899);background-size:300%;animation:shimmer 6s linear infinite;color:#fff;font-size:13px;font-weight:700;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:relative;z-index:200;}
+    .announce-bar .left{display:flex;align-items:center;gap:8px;}
+    .announce-bar .dot{width:9px;height:9px;border-radius:50%;background:#bbf7d0;box-shadow:0 0 8px #4ade80;animation:pulse 1.4s infinite;}
+    .announce-bar .right{display:flex;align-items:center;gap:20px;}
+    .announce-bar .right span{display:flex;align-items:center;gap:6px;}
+
+    /* NAV */
+    nav{background:rgba(255,253,247,.9);backdrop-filter:blur(24px);border-bottom:1px solid rgba(236,72,153,.12);position:sticky;top:0;z-index:100;box-shadow:0 2px 18px rgba(236,72,153,.05);}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .nav-links{display:flex;gap:30px;list-style:none;}
+    .nav-links a{text-decoration:none;color:#475569;font-size:14px;font-weight:600;transition:color .2s;}
+    .nav-links a:hover{color:#ec4899;}
+    .nav-right{display:flex;align-items:center;gap:14px;}
+    .nav-phone{color:#16a34a;font-weight:800;font-size:15px;text-decoration:none;display:flex;align-items:center;gap:6px;}
+    .btn-pink{background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;font-weight:700;font-size:14px;padding:10px 22px;border-radius:8px;text-decoration:none;box-shadow:0 4px 16px rgba(236,72,153,.35);transition:all .2s;}
+    .btn-pink:hover{box-shadow:0 6px 26px rgba(236,72,153,.55);transform:translateY(-1px);}
+
+    /* ─── HERO — PREMIUM BLACK ─── */
+    .hero{position:relative;padding:96px 24px 116px;overflow:hidden;
+      background:radial-gradient(ellipse at 14% 60%,rgba(236,72,153,.22) 0%,transparent 50%),
+                 radial-gradient(ellipse at 86% 35%,rgba(34,211,238,.16) 0%,transparent 50%),
+                 radial-gradient(ellipse at 60% 100%,rgba(34,197,94,.12) 0%,transparent 55%),
+                 linear-gradient(180deg,#05070d 0%,#0a1020 60%,#06080f 100%);}
+    .hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+      background-image:linear-gradient(rgba(236,72,153,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.04) 1px,transparent 1px);
+      background-size:54px 54px;}
+    .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;position:relative;z-index:1;}
+    .hero-badges{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
+    .badge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#e5e7eb;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;backdrop-filter:blur(10px);}
+    .badge svg{width:13px;height:13px;color:#22d3ee;flex-shrink:0;}
+    .hero h1{font-size:56px;font-weight:900;line-height:1.07;margin-bottom:10px;color:#fff;}
+    .hero h1 span{background:linear-gradient(90deg,#f472b6,#22d3ee,#4ade80);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:block;animation:shimmer 8s linear infinite;}
+    .hero-desc{color:rgba(255,255,255,.6);font-size:16px;line-height:1.72;margin-bottom:28px;}
+    .hero-desc strong{color:#fff;}
+    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
+    .btn-outline{border:2px solid rgba(34,211,238,.6);color:#fff;font-weight:700;font-size:15px;padding:12px 24px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:all .2s;backdrop-filter:blur(8px);}
+    .btn-outline:hover{background:rgba(34,211,238,.14);box-shadow:0 4px 22px rgba(34,211,238,.3);}
+    .btn-filled{background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;font-weight:700;font-size:15px;padding:12px 24px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 24px rgba(236,72,153,.45);transition:all .2s;}
+    .btn-filled:hover{box-shadow:0 6px 36px rgba(236,72,153,.7);transform:translateY(-2px);}
+    .hero-perks{display:flex;flex-direction:column;gap:9px;}
+    .hero-perk{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:8px 18px;font-size:13px;color:rgba(255,255,255,.62);width:fit-content;}
+    .hero-perk svg{width:13px;height:13px;color:#4ade80;}
+    .hero-right{display:flex;flex-direction:column;gap:18px;}
+    .hero-video-card{border-radius:18px;overflow:hidden;border:2px solid rgba(34,211,238,.22);box-shadow:0 0 50px rgba(34,211,238,.18),0 24px 60px rgba(0,0,0,.55);animation:glowCyan 3.5s ease-in-out infinite;}
+    @keyframes glowCyan{0%,100%{box-shadow:0 0 35px rgba(34,211,238,.16),0 24px 60px rgba(0,0,0,.55)}50%{box-shadow:0 0 65px rgba(34,211,238,.4),0 24px 60px rgba(0,0,0,.55)}}
+    .hero-video-card video{width:100%;display:block;}
+    .stat-card{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:16px;box-shadow:0 10px 36px rgba(0,0,0,.4);}
+    .stat-icon{width:42px;height:42px;background:rgba(34,211,238,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .stat-icon svg{width:20px;height:20px;color:#22d3ee;}
+    .stat-card h3{font-size:19px;font-weight:800;color:#fff;}
+    .stat-card p{font-size:12px;color:rgba(255,255,255,.45);}
+    .stars{display:flex;gap:2px;margin-top:5px;align-items:center;}
+    .stars span{color:#fbbf24;font-size:15px;}
+    .embers{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+    .ember{position:absolute;bottom:5%;border-radius:50%;animation:ember var(--dur,4s) var(--del,0s) infinite ease-out;opacity:0;left:var(--lft,20%);}
+
+    /* real-photo frame */
+    .illus-frame{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.14);border:4px solid #fff;background:#f1f5f9;}
+    .illus-frame img{width:100%;height:100%;display:block;object-fit:cover;}
+    .photo{position:relative;overflow:hidden;}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+    .photo:hover img{transform:scale(1.06);}
+    /* on-brand gradient overlay so photos feel cohesive */
+    .ov-pink::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(236,72,153,.05),rgba(236,72,153,.22));pointer-events:none;}
+    .ov-amber::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,158,11,.05),rgba(217,119,6,.2));pointer-events:none;}
+    .ov-blue::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,99,235,.05),rgba(37,99,235,.22));pointer-events:none;}
+    .ov-green::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,197,94,.05),rgba(22,163,74,.22));pointer-events:none;}
+    .ov-slate::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(100,116,139,.05),rgba(71,85,105,.22));pointer-events:none;}
+    .img-fallback{background:linear-gradient(135deg,#cbd5e1,#94a3b8);}
+
+    /* ─── EMERGENCY — yellow/peach ─── */
+    .emergency{position:relative;overflow:hidden;padding:88px 24px;
+      background:radial-gradient(ellipse at 80% 10%,rgba(251,207,232,.6) 0%,transparent 50%),
+                 linear-gradient(180deg,#fffbe8,#fef3c7);}
+    .emergency::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(245,158,11,.07) 1.5px,transparent 1.5px);background-size:26px 26px;pointer-events:none;}
+    .emergency-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;position:relative;z-index:1;}
+    .section-tag{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:12px;}
+    .tag-pink{color:#db2777;} .tag-green{color:#16a34a;} .tag-amber{color:#d97706;} .tag-blue{color:#2563eb;} .tag-purple{color:#9333ea;}
+    .emergency h2{font-size:40px;font-weight:900;line-height:1.12;margin-bottom:10px;color:#0f172a;}
+    .emergency h2 em{font-style:normal;color:#db2777;}
+    .emergency-subtitle{color:#78716c;font-size:15px;margin-bottom:24px;}
+    .emergency-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;}
+    .emergency-list li{display:flex;align-items:center;gap:12px;font-size:15px;color:#44403c;font-weight:500;}
+    .icon-warn{width:28px;height:28px;min-width:28px;background:#fee2e2;border:1px solid #fca5a5;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+    .icon-warn svg{width:13px;height:13px;color:#dc2626;}
+    .btn-emergency{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;border-radius:12px;padding:16px 26px;text-decoration:none;font-weight:800;font-size:19px;animation:glowPink 2.2s ease-in-out infinite;transition:all .2s;}
+    .btn-emergency .label{font-size:12px;font-weight:500;opacity:.9;}
+    .btn-emergency:hover{transform:translateY(-2px);}
+    .em-right{display:flex;flex-direction:column;gap:20px;}
+    .dispatch-card{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:18px;padding:26px;box-shadow:0 12px 36px rgba(0,0,0,.07);}
+    .dispatch-card h3{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:5px;}
+    .dispatch-card>p{color:#94a3b8;font-size:13px;margin-bottom:22px;}
+    .dispatch-steps{display:flex;flex-direction:column;gap:16px;}
+    .dispatch-step{display:flex;align-items:center;gap:14px;}
+    .step-num{width:36px;height:36px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;box-shadow:0 4px 12px rgba(245,158,11,.35);}
+    .step-info h4{font-size:13px;font-weight:700;color:#0f172a;}
+    .step-info p{font-size:12px;color:#94a3b8;}
+    .step-connector{width:2px;height:16px;background:#fde68a;margin-left:17px;}
+    .avg-badge{display:inline-flex;align-items:center;gap:8px;background:#fef3c7;border:1px solid #fcd34d;color:#d97706;font-weight:700;font-size:13px;padding:8px 15px;border-radius:100px;margin-top:18px;}
+
+    /* ─── SERVICES — white/green ─── */
+    .services{position:relative;overflow:hidden;padding:96px 24px;
+      background:radial-gradient(ellipse at 15% 20%,rgba(187,247,208,.5) 0%,transparent 45%),
+                 radial-gradient(ellipse at 90% 80%,rgba(254,240,138,.5) 0%,transparent 45%),
+                 linear-gradient(180deg,#ffffff,#f0fdf4);}
+    .services::before{content:'';position:absolute;inset:0;pointer-events:none;
+      background-image:linear-gradient(rgba(34,197,94,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,.035) 1px,transparent 1px);
+      background-size:42px 42px;}
+    .services-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+    .section-header{text-align:center;margin-bottom:54px;}
+    .section-header h2{font-size:42px;font-weight:900;line-height:1.12;color:#0f172a;}
+    .section-header h2 em{font-style:normal;}
+    .em-pink{color:#db2777;} .em-green{color:#16a34a;} .em-amber{color:#d97706;} .em-blue{color:#2563eb;} .em-purple{color:#9333ea;}
+    .section-header p{color:#64748b;font-size:15px;margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto;}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+    .tilt-wrap{perspective:900px;}
+    .service-card{position:relative;overflow:hidden;border-radius:18px;transition:transform .12s ease,box-shadow .3s;transform-style:preserve-3d;cursor:default;background:#fff;border:1px solid rgba(0,0,0,.05);box-shadow:0 8px 26px rgba(0,0,0,.06);}
+    .card-illus{height:170px;position:relative;overflow:hidden;}
+    .card-illus svg,.card-illus img{width:100%;height:100%;object-fit:cover;display:block;}
+    .card-body{padding:20px 20px 22px;}
+    .service-card:hover{box-shadow:0 18px 44px rgba(0,0,0,.12);}
+    .card-fire:hover{box-shadow:0 18px 44px rgba(236,72,153,.2);}
+    .card-ice:hover{box-shadow:0 18px 44px rgba(37,99,235,.18);}
+    .card-water:hover{box-shadow:0 18px 44px rgba(217,119,6,.18);}
+    .card-air:hover{box-shadow:0 18px 44px rgba(34,197,94,.2);}
+    .card-metal:hover{box-shadow:0 18px 44px rgba(100,116,139,.18);}
+    .service-card h3{font-size:16px;font-weight:800;margin-bottom:11px;color:#0f172a;}
+    .service-card ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+    .service-card ul li{font-size:12px;color:#64748b;display:flex;align-items:center;gap:7px;}
+    .service-card ul li::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+    .card-fire ul li::before{background:#ec4899;}
+    .card-ice ul li::before{background:#2563eb;}
+    .card-water ul li::before{background:#d97706;}
+    .card-air ul li::before{background:#16a34a;}
+    .card-metal ul li::before{background:#64748b;}
+    .btn-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;text-decoration:none;margin-top:14px;}
+    .link-fire{color:#db2777;} .link-ice{color:#2563eb;} .link-water{color:#d97706;} .link-air{color:#16a34a;} .link-metal{color:#475569;}
+    .btn-link:hover{opacity:.7;}
+
+    /* ─── WHY — green/white ─── */
+    .why{position:relative;overflow:hidden;padding:96px 24px;
+      background:radial-gradient(ellipse at 50% 0%,rgba(187,247,208,.6) 0%,transparent 50%),
+                 radial-gradient(ellipse at 10% 90%,rgba(251,207,232,.4) 0%,transparent 45%),
+                 linear-gradient(180deg,#f7fef9,#ffffff);}
+    .why-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;gap:54px;align-items:center;}
+    .why-left h2{font-size:40px;font-weight:900;line-height:1.12;color:#0f172a;}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;}
+    .why-card{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:24px;transition:all .3s;box-shadow:0 6px 20px rgba(0,0,0,.05);}
+    .why-card:hover{box-shadow:0 16px 40px rgba(34,197,94,.15);transform:translateY(-3px);}
+    .why-card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;animation:float 4s ease-in-out infinite;}
+    .ico-1{background:linear-gradient(135deg,#fce7f3,#fbcfe8);}
+    .ico-2{background:linear-gradient(135deg,#fef9c3,#fef08a);}
+    .ico-3{background:linear-gradient(135deg,#dcfce7,#bbf7d0);}
+    .ico-4{background:linear-gradient(135deg,#fce7f3,#fbcfe8);}
+    .ico-5{background:linear-gradient(135deg,#fef9c3,#fef08a);}
+    .ico-6{background:linear-gradient(135deg,#dcfce7,#bbf7d0);}
+    .why-card:nth-child(2) .why-card-icon{animation-delay:.6s;}
+    .why-card:nth-child(3) .why-card-icon{animation-delay:1.2s;}
+    .why-card:nth-child(4) .why-card-icon{animation-delay:1.8s;}
+    .why-card:nth-child(5) .why-card-icon{animation-delay:2.4s;}
+    .why-card:nth-child(6) .why-card-icon{animation-delay:3s;}
+    .why-card h3{font-size:15px;font-weight:800;margin-bottom:7px;color:#0f172a;}
+    .why-card p{font-size:13px;color:#64748b;line-height:1.6;}
+    .why-illus-panel{display:flex;flex-direction:column;gap:18px;}
+    .logo-stat-row{display:flex;gap:12px;}
+    .logo-stat{flex:1;background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:14px;padding:16px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.05);}
+    .logo-stat .val{font-size:24px;font-weight:900;}
+    .logo-stat .lbl{font-size:11px;color:#94a3b8;margin-top:3px;}
+
+    /* ─── BRANDS — white ─── */
+    .brands{position:relative;padding:54px 24px;background:#fffdf7;border-top:1px solid rgba(0,0,0,.04);border-bottom:1px solid rgba(0,0,0,.04);}
+    .brands-inner{max-width:1200px;margin:0 auto;text-align:center;}
+    .brands h3{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#cbd5e1;margin-bottom:24px;}
+    .brands-logos{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+    .brand-pill{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:100px;padding:12px 26px;font-size:14px;font-weight:800;color:#64748b;transition:all .25s;box-shadow:0 3px 10px rgba(0,0,0,.04);}
+    .brand-pill:hover{color:#ec4899;border-color:rgba(236,72,153,.3);box-shadow:0 6px 18px rgba(236,72,153,.12);}
+
+    /* ─── SERVICE AREA — pink/white ─── */
+    .service-area{position:relative;overflow:hidden;padding:96px 24px;
+      background:radial-gradient(ellipse at 85% 50%,rgba(251,207,232,.65) 0%,transparent 50%),
+                 radial-gradient(ellipse at 10% 30%,rgba(254,240,138,.4) 0%,transparent 45%),
+                 linear-gradient(180deg,#fff8fb,#ffffff);}
+    .sa-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;position:relative;z-index:1;}
+    .sa-inner h2{font-size:38px;font-weight:900;line-height:1.15;margin-bottom:12px;color:#0f172a;}
+    .sa-inner p.sub{color:#64748b;font-size:15px;line-height:1.7;margin-bottom:24px;}
+    .cities-grid{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;}
+    .city-tag{background:#fff;border:1px solid rgba(236,72,153,.15);border-radius:100px;padding:7px 15px;font-size:12px;font-weight:600;color:#475569;display:flex;align-items:center;gap:5px;transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.03);}
+    .city-tag:hover{border-color:#ec4899;color:#db2777;}
+    .city-tag::before{content:"📍";font-size:10px;}
+    .not-listed{font-size:13px;color:#94a3b8;font-style:italic;}
+    .not-listed a{color:#db2777;}
+    .map-card{position:relative;border-radius:22px;overflow:hidden;border:4px solid #fff;box-shadow:0 18px 50px rgba(236,72,153,.18);background:#fff;}
+    .map-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;background:linear-gradient(135deg,#fdf2f8,#f0fdf4);}
+    .map-banner-title{font-size:16px;font-weight:800;color:#0f172a;}
+    .map-banner-sub{font-size:12px;color:#78716c;margin-top:2px;}
+    .map-rating{display:flex;flex-direction:column;align-items:flex-end;}
+    .map-rating .num{font-size:26px;font-weight:900;color:#f59e0b;line-height:1;}
+
+    /* ─── REVIEWS — yellow/white ─── */
+    .reviews{position:relative;overflow:hidden;padding:96px 24px;
+      background:radial-gradient(ellipse at 20% 80%,rgba(254,240,138,.6) 0%,transparent 48%),
+                 radial-gradient(ellipse at 80% 15%,rgba(251,207,232,.45) 0%,transparent 45%),
+                 linear-gradient(180deg,#fffef5,#ffffff);}
+    .reviews-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:46px;margin-bottom:36px;}
+    .review-card{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:24px;transition:all .3s;box-shadow:0 6px 20px rgba(0,0,0,.05);}
+    .review-card:hover{box-shadow:0 16px 40px rgba(245,158,11,.14);transform:translateY(-3px);}
+    .review-stars{display:flex;gap:2px;margin-bottom:12px;}
+    .review-stars span{color:#f59e0b;font-size:14px;}
+    .review-text{font-size:14px;color:#475569;line-height:1.7;font-style:italic;margin-bottom:18px;}
+    .reviewer{display:flex;align-items:center;gap:11px;}
+    .reviewer-avatar{width:38px;height:38px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
+    .reviewer-name{font-size:13px;font-weight:700;color:#0f172a;}
+    .reviewer-service{font-size:11px;color:#94a3b8;}
+    .reviews-cta{text-align:center;}
+    .btn-outline-dark{display:inline-flex;align-items:center;gap:8px;border:2px solid #0f172a;color:#0f172a;font-weight:700;font-size:14px;padding:12px 22px;border-radius:8px;text-decoration:none;transition:all .2s;}
+    .btn-outline-dark:hover{background:#0f172a;color:#fff;}
+
+    /* ─── PLANS — green/pink ─── */
+    .plans{position:relative;overflow:hidden;padding:96px 24px;
+      background:radial-gradient(ellipse at 30% 40%,rgba(187,247,208,.6) 0%,transparent 50%),
+                 radial-gradient(ellipse at 80% 70%,rgba(251,207,232,.55) 0%,transparent 50%),
+                 linear-gradient(135deg,#f7fef9,#fff8fb);}
+    .plans-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+    .plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:46px;}
+    .plan-card{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:36px;transition:all .3s;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.06);overflow:hidden;}
+    .plan-card.featured{border:2px solid #16a34a;animation:glowGreen 3s ease-in-out infinite;}
+    .plan-watermark{position:absolute;right:-12px;bottom:-12px;width:170px;opacity:.07;pointer-events:none;}
+    .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 16px;border-radius:100px;box-shadow:0 4px 14px rgba(34,197,94,.4);}
+    .plan-card h3{font-size:21px;font-weight:800;margin-bottom:7px;color:#0f172a;}
+    .plan-card .plan-desc{font-size:14px;color:#94a3b8;margin-bottom:22px;}
+    .plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:26px;position:relative;z-index:1;}
+    .plan-features li{display:flex;align-items:center;gap:10px;font-size:14px;color:#475569;}
+    .plan-features li::before{content:"✓";min-width:20px;width:20px;height:20px;background:#dcfce7;color:#16a34a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;}
+    .btn-plan-green{display:block;text-align:center;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-weight:700;font-size:15px;padding:14px;border-radius:10px;text-decoration:none;box-shadow:0 4px 18px rgba(34,197,94,.35);transition:all .2s;position:relative;z-index:1;}
+    .btn-plan-green:hover{box-shadow:0 6px 28px rgba(34,197,94,.55);transform:translateY(-2px);}
+    .btn-plan-outline{display:block;text-align:center;border:2px solid #db2777;color:#db2777;font-weight:700;font-size:15px;padding:14px;border-radius:10px;text-decoration:none;transition:all .2s;}
+    .btn-plan-outline:hover{background:#db2777;color:#fff;}
+
+    /* ─── FAQ — white/yellow ─── */
+    .faq{position:relative;overflow:hidden;padding:96px 24px;
+      background:radial-gradient(ellipse at 50% 100%,rgba(254,240,138,.5) 0%,transparent 50%),
+                 linear-gradient(180deg,#ffffff,#fffef5);}
+    .faq-inner{max-width:780px;margin:0 auto;position:relative;z-index:1;}
+    .faq-list{margin-top:44px;}
+    .faq-item{border-bottom:1px solid rgba(0,0,0,.07);}
+    .faq-question{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:20px 0;font-size:16px;font-weight:700;color:#1f2937;display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:inherit;transition:color .2s;}
+    .faq-question:hover{color:#d97706;}
+    .faq-chevron{font-size:17px;color:#cbd5e1;transition:transform .3s,color .2s;flex-shrink:0;}
+    .faq-answer{display:none;padding:0 0 20px;font-size:14px;color:#64748b;line-height:1.72;}
+    .faq-item.open .faq-answer{display:block;}
+    .faq-item.open .faq-chevron{transform:rotate(180deg);color:#d97706;}
+    .faq-item.open .faq-question{color:#d97706;}
+    .faq-cta{text-align:center;margin-top:40px;}
+    .btn-link-pink{color:#db2777;font-weight:700;text-decoration:none;font-size:15px;}
+    .btn-link-pink:hover{text-decoration:underline;}
+
+    /* ─── CONTACT — pink/green ─── */
+    .contact{position:relative;overflow:hidden;padding:96px 24px;
+      background:radial-gradient(ellipse at 8% 50%,rgba(251,207,232,.7) 0%,transparent 48%),
+                 radial-gradient(ellipse at 92% 50%,rgba(187,247,208,.6) 0%,transparent 48%),
+                 linear-gradient(135deg,#fff8fb,#f7fef9);}
+    .contact-video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.08;pointer-events:none;z-index:0;}
+    .contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:54px;position:relative;z-index:1;}
+    .contact h2{font-size:38px;font-weight:900;line-height:1.2;margin-bottom:12px;color:#0f172a;}
+    .contact h2 em{font-style:normal;color:#16a34a;}
+    .contact-subtitle{color:#64748b;font-size:15px;margin-bottom:32px;}
+    .contact-info-list{display:flex;flex-direction:column;gap:20px;}
+    .contact-info-item{display:flex;gap:14px;align-items:flex-start;}
+    .contact-info-icon{width:44px;height:44px;background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.05);}
+    .contact-info-icon span{font-size:19px;}
+    .contact-info-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8;margin-bottom:3px;}
+    .contact-info-val{font-size:15px;font-weight:700;color:#0f172a;}
+    .contact-info-sub{font-size:12px;color:#94a3b8;margin-top:2px;}
+    .contact-form-card{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:34px;box-shadow:0 18px 50px rgba(0,0,0,.08);}
+    .form-group{margin-bottom:16px;}
+    .form-group label{display:block;font-size:11px;font-weight:800;color:#64748b;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+    .form-group label span{color:#db2777;}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;color:#1f2937;outline:none;transition:border-color .2s;background:#fff;}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:#cbd5e1;}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#16a34a;}
+    .form-group textarea{height:96px;resize:vertical;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .btn-submit{width:100%;background:linear-gradient(135deg,#ec4899,#16a34a);color:#fff;font-weight:700;font-size:15px;padding:14px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 20px rgba(236,72,153,.3);transition:all .2s;}
+    .btn-submit:hover{box-shadow:0 6px 30px rgba(236,72,153,.5);transform:translateY(-2px);}
+    .form-note{font-size:11px;color:#94a3b8;text-align:center;margin-top:10px;}
+
+    /* ─── FOOTER ─── */
+    footer{position:relative;background:linear-gradient(135deg,#fdf2f8,#f0fdf4);color:#64748b;padding:54px 24px 26px;border-top:1px solid rgba(236,72,153,.1);}
+    .footer-inner{max-width:1200px;margin:0 auto;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+    .footer-brand .logo-text{font-size:17px;font-weight:800;color:#0f172a;}
+    .footer-brand p{font-size:13px;line-height:1.7;margin-top:9px;}
+    .footer-brand .footer-phone{color:#16a34a;font-weight:800;font-size:14px;text-decoration:none;display:block;margin-top:13px;}
+    .footer-col h4{font-size:12px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+    .footer-col ul li a{color:#64748b;text-decoration:none;font-size:13px;transition:color .2s;}
+    .footer-col ul li a:hover{color:#db2777;}
+    .footer-bottom{border-top:1px solid rgba(0,0,0,.06);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+    .footer-bottom p{font-size:12px;}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:1000px){.why-inner{grid-template-columns:1fr;}}
+    @media(max-width:900px){.hero-inner,.emergency-inner,.sa-inner,.contact-inner,.plans-grid{grid-template-columns:1fr;} .hero h1{font-size:38px;} .footer-top{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.nav-links{display:none;} .footer-top{grid-template-columns:1fr;} .form-row{grid-template-columns:1fr;} .announce-bar .right{display:none;} .why-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce-bar">
+  <div class="left"><span class="dot"></span><span>We're available RIGHT NOW — 24 hours a day, 7 days a week</span></div>
+  <div class="right">
+    <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Licensed &amp; Insured in Ontario</span>
+    <span>·</span>
+    <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>TSSA-Certified</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="assets/hero-logo-poster.png" alt="Mahli" style="width:46px;height:46px;object-fit:contain;border-radius:8px;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#emergency">24/7 Emergency</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#service-area">Service Area</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="tel:6475629654" class="nav-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        (647) 562-9654
+      </a>
+      <a href="#contact" class="btn-pink">Free Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="embers" id="embers"></div>
+  <div class="hero-inner">
+    <div class="hero-left reveal">
+      <div class="hero-badges">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Licensed &amp; Insured</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>24/7 Emergency</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>GTA's Trusted HVAC</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Upfront Pricing</span>
+      </div>
+      <h1>York Region's 24/7 HVAC<span>When you need us most</span></h1>
+      <p class="hero-desc">Your furnace quits at midnight. Your AC dies during a heatwave. Your water heater floods the basement.<br><br><strong>Mahli answers — 24 hours a day, 365 days a year.</strong> No voicemail, no waiting until morning. A real technician, dispatched to your door.</p>
+      <div class="hero-btns">
+        <a href="tel:6475629654" class="btn-outline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(647) 562-9654</a>
+        <a href="#contact" class="btn-filled">Get a Free Quote →</a>
+      </div>
+      <div class="hero-perks">
+        <span class="hero-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Same-day service — Fast response across York Region</span>
+        <span class="hero-perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>No after-hours surcharge — One fair rate, anytime</span>
+      </div>
+    </div>
+    <div class="hero-right reveal" style="transition-delay:.18s">
+      <!-- MAHLI LOGO VIDEO -->
+      <div class="hero-video-card">
+        <video autoplay muted loop playsinline poster="assets/hero-logo-poster.png">
+          <source src="assets/hero-video.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div>
+          <h3>Under 60 Minutes</h3>
+          <p>Average response time</p>
+          <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span style="color:#fff;font-size:12px;margin-left:5px;font-weight:700;">4.9 Google Rating</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY -->
+<section class="emergency" id="emergency">
+  <div class="embers" id="embers2"></div>
+  <div class="emergency-inner">
+    <div class="reveal">
+      <p class="section-tag tag-pink">DON'T WAIT</p>
+      <h2>HVAC emergency?<br>We're on our way — <em>right now.</em></h2>
+      <p class="emergency-subtitle">If any of these apply, stop reading and call us immediately:</p>
+      <ul class="emergency-list">
+        <li><div class="icon-warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>No heat when it's below -10°C outside</li>
+        <li><div class="icon-warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>AC failure during a heat advisory</li>
+        <li><div class="icon-warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>You smell gas or hear a gas leak</li>
+        <li><div class="icon-warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>CO detector is sounding or flashing</li>
+        <li><div class="icon-warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>Burning smell or electrical smell from HVAC equipment</li>
+        <li><div class="icon-warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>Water leaking or flooding from your heating/cooling unit</li>
+      </ul>
+      <a href="tel:6475629654" class="btn-emergency">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <div><div>(647) 562-9654</div><div class="label">Emergency Line — 24/7</div></div>
+      </a>
+    </div>
+    <div class="em-right reveal" style="transition-delay:.2s">
+      <!-- REAL PHOTO: technician repairing furnace/heating -->
+      <div class="illus-frame photo ov-amber" style="min-height:300px">
+        <img src="https://loremflickr.com/720/440/furnace,repair/all?lock=21" alt="HVAC technician repairing a furnace" loading="lazy" onerror="this.onerror=null;this.src='https://loremflickr.com/720/440/heating,technician?lock=210';this.parentElement.classList.add('img-fallback')"/>
+      </div>
+      <div class="dispatch-card">
+        <h3>We're On Our Way</h3>
+        <p>Within 1–2 hours across York Region</p>
+        <div class="dispatch-steps">
+          <div class="dispatch-step"><div class="step-num">1</div><div class="step-info"><h4>Call Response</h4><p>Under 60 sec</p></div></div>
+          <div class="step-connector"></div>
+          <div class="dispatch-step"><div class="step-num">2</div><div class="step-info"><h4>Dispatch</h4><p>Under 15 min</p></div></div>
+          <div class="step-connector"></div>
+          <div class="dispatch-step"><div class="step-num">3</div><div class="step-info"><h4>Arrival</h4><p>Average 42 min</p></div></div>
+        </div>
+        <div class="avg-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Average Response: 42 min</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-header reveal">
+      <p class="section-tag tag-green">OUR SERVICES</p>
+      <h2>Complete HVAC care, all under <em class="em-green">one roof</em></h2>
+      <p>From emergency furnace repair to full system installations — every brand, every system, every season.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- HEATING -->
+      <div class="tilt-wrap reveal"><div class="service-card card-fire" data-tilt>
+        <div class="card-illus photo ov-pink">
+          <img src="https://loremflickr.com/600/400/furnace,heating/all?lock=31" alt="Furnace heating system" loading="lazy" onerror="this.onerror=null;this.src='https://loremflickr.com/600/400/furnace?lock=310'"/>
+        </div>
+        <div class="card-body">
+          <h3>Heating</h3>
+          <ul><li>Furnace Installation</li><li>Furnace Repair</li><li>Furnace Maintenance</li><li>Boiler Services</li><li>Heat Pump Install</li></ul>
+          <a href="#contact" class="btn-link link-fire">Get a quote →</a>
+        </div>
+      </div></div>
+
+      <!-- COOLING -->
+      <div class="tilt-wrap reveal" style="transition-delay:.08s"><div class="service-card card-ice" data-tilt>
+        <div class="card-illus photo ov-blue">
+          <img src="https://loremflickr.com/600/400/airconditioner,technician/all?lock=32" alt="Technician servicing an air conditioner" loading="lazy" onerror="this.onerror=null;this.src='https://loremflickr.com/600/400/airconditioner?lock=320'"/>
+        </div>
+        <div class="card-body">
+          <h3>Cooling</h3>
+          <ul><li>Central AC Install</li><li>AC Repair</li><li>AC Maintenance</li><li>Ductless Mini-Splits</li><li>Smart Thermostats</li></ul>
+          <a href="#contact" class="btn-link link-ice">Get a quote →</a>
+        </div>
+      </div></div>
+
+      <!-- WATER HEATER — real photo -->
+      <div class="tilt-wrap reveal" style="transition-delay:.16s"><div class="service-card card-water" data-tilt>
+        <div class="card-illus">
+          <img src="assets/rinnai-install.png" alt="Rinnai tankless water heater installation"/>
+        </div>
+        <div class="card-body">
+          <h3>Water Heater</h3>
+          <ul><li>Tank Water Heaters</li><li>Tankless Systems</li><li>Hot Water Maintenance</li><li>Installation</li><li>Repair &amp; Service</li></ul>
+          <a href="#contact" class="btn-link link-water">Get a quote →</a>
+        </div>
+      </div></div>
+
+      <!-- IAQ -->
+      <div class="tilt-wrap reveal" style="transition-delay:.24s"><div class="service-card card-air" data-tilt>
+        <div class="card-illus photo ov-green">
+          <img src="https://loremflickr.com/600/400/airfilter,hvac/all?lock=33" alt="Technician replacing an air filter" loading="lazy" onerror="this.onerror=null;this.src='https://loremflickr.com/600/400/airfilter?lock=330'"/>
+        </div>
+        <div class="card-body">
+          <h3>Indoor Air Quality</h3>
+          <ul><li>Humidifiers</li><li>Air Purifiers</li><li>HRV / ERV Systems</li><li>CO Detector Checks</li><li>Duct Inspection</li></ul>
+          <a href="#contact" class="btn-link link-air">Get a quote →</a>
+        </div>
+      </div></div>
+
+      <!-- DUCTWORK -->
+      <div class="tilt-wrap reveal" style="transition-delay:.32s"><div class="service-card card-metal" data-tilt>
+        <div class="card-illus photo ov-slate">
+          <img src="https://loremflickr.com/600/400/ductwork,ventilation/all?lock=34" alt="Ductwork and ventilation system" loading="lazy" onerror="this.onerror=null;this.src='https://loremflickr.com/600/400/ventilation?lock=340'"/>
+        </div>
+        <div class="card-body">
+          <h3>Ductwork &amp; Gas</h3>
+          <ul><li>Duct Cleaning</li><li>Duct Sealing &amp; Repair</li><li>New Ductwork</li><li>Gas Line Services</li><li>Gas Fireplaces</li></ul>
+          <a href="#contact" class="btn-link link-metal">Get a quote →</a>
+        </div>
+      </div></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="why-left reveal">
+      <p class="section-tag tag-green">WHY CHOOSE MAHLI</p>
+      <h2>What makes us <em class="em-pink">different</em></h2>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-card-icon ico-1">🕐</div><h3>Always Available</h3><p>24/7/365 emergency service. A real technician answers — no voicemail.</p></div>
+        <div class="why-card"><div class="why-card-icon ico-2">📍</div><h3>Local &amp; Community</h3><p>We live in York Region. Your comfort is personal to us.</p></div>
+        <div class="why-card"><div class="why-card-icon ico-3">🏅</div><h3>Licensed &amp; Certified</h3><p>TSSA-certified, fully licensed, bonded, and insured in Ontario.</p></div>
+        <div class="why-card"><div class="why-card-icon ico-4">💲</div><h3>Transparent Pricing</h3><p>No hidden fees, no after-hours surcharges. Price before we start.</p></div>
+        <div class="why-card"><div class="why-card-icon ico-5">🔩</div><h3>All Brands Serviced</h3><p>Lennox, Carrier, Trane, Goodman, Rheem, KeepRite — and more.</p></div>
+        <div class="why-card"><div class="why-card-icon ico-6">⚡</div><h3>Fast Response</h3><p>Average 42-min arrival. Same-day for most non-emergency calls.</p></div>
+      </div>
+    </div>
+    <div class="why-illus-panel reveal" style="transition-delay:.2s">
+      <!-- REAL PHOTO: HVAC technician at work -->
+      <div class="illus-frame photo ov-green" style="min-height:340px">
+        <img src="https://loremflickr.com/560/440/hvac,technician/all?lock=22" alt="Professional HVAC technician at work" loading="lazy" onerror="this.onerror=null;this.src='https://loremflickr.com/560/440/repairman,tools?lock=220'"/>
+      </div>
+      <div class="logo-stat-row">
+        <div class="logo-stat"><div class="val" style="color:#db2777;">42<span style="font-size:14px;">min</span></div><div class="lbl">Avg Arrival</div></div>
+        <div class="logo-stat"><div class="val" style="color:#f59e0b;">4.9★</div><div class="lbl">Google Rating</div></div>
+        <div class="logo-stat"><div class="val" style="color:#16a34a;">24/7</div><div class="lbl">Always On</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands">
+  <div class="brands-inner reveal">
+    <h3>Trusted Service For All Major Brands</h3>
+    <div class="brands-logos">
+      <span class="brand-pill">Lennox</span><span class="brand-pill">Carrier</span><span class="brand-pill">Trane</span><span class="brand-pill">Goodman</span><span class="brand-pill">Rheem</span><span class="brand-pill">KeepRite</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="service-area" id="service-area">
+  <div class="sa-inner">
+    <div class="reveal">
+      <p class="section-tag tag-pink">SERVICE AREA</p>
+      <h2>Proudly serving York Region &amp; the GTA</h2>
+      <p class="sub">Fast response across York Region, North Toronto, and surrounding areas. Not sure if you're covered? Call us — we'll let you know.</p>
+      <div class="cities-grid">
+        <span class="city-tag">Markham</span><span class="city-tag">Richmond Hill</span><span class="city-tag">Vaughan</span><span class="city-tag">Aurora</span><span class="city-tag">Newmarket</span><span class="city-tag">Stouffville</span><span class="city-tag">Thornhill</span><span class="city-tag">Woodbridge</span><span class="city-tag">King City</span><span class="city-tag">Maple</span><span class="city-tag">East Gwillimbury</span><span class="city-tag">North Toronto</span><span class="city-tag">Scarborough</span><span class="city-tag">Pickering</span>
+      </div>
+      <p class="not-listed">Don't see your city? We may still cover it — <a href="tel:6475629654">call to check</a></p>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15959.273281372596!2d0!3d0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21148cf6d885c66f%3A0x78bacc324f0e6fd7!2sMahliHeating%26Cooling24%2F7!5e0!3m2!1sen!2sng!4v1780684891347!5m2!1sen!2sng" width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-banner">
+          <div>
+            <div class="map-banner-title">York Region &amp; GTA</div>
+            <div class="map-banner-sub">Fast, reliable HVAC service area</div>
+          </div>
+          <div class="map-rating"><span class="num">4.9</span><span style="color:#f59e0b;font-size:15px;">★★★★★</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="section-header reveal">
+      <p class="section-tag tag-amber">★ 4.9 Google Rating</p>
+      <h2>Our customers say it <em class="em-amber">best</em></h2>
+      <p>Real reviews from real people across York Region.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal"><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">"Our furnace died at 11pm on the coldest night of the year. Mahli had a technician at our door in 40 minutes. Professional, fast, and had us warm within the hour."</p><div class="reviewer"><div class="reviewer-avatar" style="background:linear-gradient(135deg,#ec4899,#db2777);">ST</div><div><div class="reviewer-name">Sarah T.</div><div class="reviewer-service">Furnace Repair · Richmond Hill</div></div></div></div>
+      <div class="review-card reveal" style="transition-delay:.1s"><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">"Called during the August heatwave when our AC quit. Here within an hour, fixed quickly. Fair pricing, no surprise fees. Highly recommended."</p><div class="reviewer"><div class="reviewer-avatar" style="background:linear-gradient(135deg,#16a34a,#15803d);">MK</div><div><div class="reviewer-name">Michael K.</div><div class="reviewer-service">AC Repair · Markham</div></div></div></div>
+      <div class="review-card reveal" style="transition-delay:.2s"><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">"Replaced our entire HVAC system. The team was clean, respectful, and the installation is flawless. Energy bills dropped noticeably."</p><div class="reviewer"><div class="reviewer-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706);">DL</div><div><div class="reviewer-name">David L.</div><div class="reviewer-service">System Install · Vaughan</div></div></div></div>
+      <div class="review-card reveal"><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">"Had a gas smell in the basement and they came immediately. Found a loose fitting and fixed it on the spot. They literally could have saved our family."</p><div class="reviewer"><div class="reviewer-avatar" style="background:linear-gradient(135deg,#ec4899,#db2777);">RC</div><div><div class="reviewer-name">Rachel C.</div><div class="reviewer-service">Gas Service · Aurora</div></div></div></div>
+      <div class="review-card reveal" style="transition-delay:.1s"><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">"Signed up for the Comfort Protection Plan — best decision. Priority scheduling is a lifesaver with young kids at home."</p><div class="reviewer"><div class="reviewer-avatar" style="background:linear-gradient(135deg,#16a34a,#15803d);">JP</div><div><div class="reviewer-name">James P.</div><div class="reviewer-service">Maintenance Plan · Newmarket</div></div></div></div>
+      <div class="review-card reveal" style="transition-delay:.2s"><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">"Tank burst and flooded the utility room. Mahli had a new tankless system installed the next morning. Clean work, fair price, hot water that never runs out!"</p><div class="reviewer"><div class="reviewer-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706);">AW</div><div><div class="reviewer-name">Angela W.</div><div class="reviewer-service">Water Heater · Thornhill</div></div></div></div>
+    </div>
+    <div class="reviews-cta reveal"><a href="https://www.google.com/search?q=Mahli+Heating+Cooling" target="_blank" class="btn-outline-dark">Read More Reviews on Google ↗</a></div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="plans-inner">
+    <div class="section-header reveal">
+      <p class="section-tag tag-green">PLANS &amp; OPTIONS</p>
+      <h2>Comfort that fits <em class="em-pink">your budget</em></h2>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card featured reveal">
+        <div class="plan-badge">Most Popular</div>
+        <img class="plan-watermark" src="assets/hero-logo-poster.png" alt=""/>
+        <h3>Comfort Protection Plan</h3>
+        <p class="plan-desc">Annual peace of mind with priority service.</p>
+        <ul class="plan-features">
+          <li>Seasonal tune-ups (spring &amp; fall)</li>
+          <li>Priority response — skip the queue</li>
+          <li>15% repair discount</li>
+          <li>Comprehensive safety inspections</li>
+          <li>No dispatch fees, ever</li>
+        </ul>
+        <a href="#contact" class="btn-plan-green">Join the Plan</a>
+      </div>
+      <div class="plan-card reveal" style="transition-delay:.15s">
+        <h3>Financing &amp; Rebates</h3>
+        <p class="plan-desc">Flexible payment options for any project size.</p>
+        <ul class="plan-features">
+          <li>Monthly payment plans available</li>
+          <li>Enbridge rebate assistance</li>
+          <li>Energy efficiency program guidance</li>
+          <li>Free, no-obligation quotes</li>
+          <li>Approval in minutes — not days</li>
+        </ul>
+        <a href="#contact" class="btn-plan-outline">Ask About Financing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="section-header reveal">
+      <p class="section-tag tag-amber">FAQ</p>
+      <h2>Got questions? We've got <em class="em-amber">answers</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How fast can you get to me in an emergency?<span class="faq-chevron">▾</span></button><div class="faq-answer">Our average response time is 42 minutes across York Region. We answer calls in under 60 seconds, dispatch in under 15 minutes, and aim to be at your door within the hour — any time of day or night.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Do you charge extra for after-hours or weekend calls?<span class="faq-chevron">▾</span></button><div class="faq-answer">No. We charge one fair rate regardless of when you call — no after-hours surcharges, no weekend premiums, no holiday fees. You'll always know the price before we start any work.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What brands do you service and install?<span class="faq-chevron">▾</span></button><div class="faq-answer">We service and install all major brands including Lennox, Carrier, Trane, Goodman, Rheem, and KeepRite. If you have a brand not listed, just call us — chances are we can help.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How often should I service my HVAC system?<span class="faq-chevron">▾</span></button><div class="faq-answer">We recommend two tune-ups per year — once in spring before cooling season and once in fall before heating season. Regular maintenance extends equipment life and catches small issues before they become expensive repairs.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Do you offer maintenance plans?<span class="faq-chevron">▾</span></button><div class="faq-answer">Yes! Our Comfort Protection Plan covers two seasonal tune-ups per year, priority emergency response, a 15% repair discount, and no dispatch fees — ever.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Are you licensed and insured?<span class="faq-chevron">▾</span></button><div class="faq-answer">Absolutely. We are TSSA-certified, fully licensed in Ontario, bonded, and insured. Every technician on our team meets all provincial requirements and safety standards.</div></div>
+    </div>
+    <div class="faq-cta reveal"><a href="#contact" class="btn-link-pink">View all FAQs →</a></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <video class="contact-video-bg" autoplay muted loop playsinline>
+    <source src="assets/site-bg.mp4" type="video/mp4"/>
+  </video>
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-tag tag-pink">GET IN TOUCH</p>
+      <h2>Let's get your <em>comfort back</em></h2>
+      <p class="contact-subtitle">Fill out the form and we'll respond within 30 minutes during business hours — and 24/7 for emergencies.</p>
+      <div class="contact-info-list">
+        <div class="contact-info-item"><div class="contact-info-icon"><span>📞</span></div><div><div class="contact-info-label">Emergency Hotline</div><div class="contact-info-val">(647) 562-9654</div><div class="contact-info-sub">Available 24/7 — calls answered in seconds</div></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><span>✉️</span></div><div><div class="contact-info-label">Email Us</div><div class="contact-info-val">mahliheatingandcooling@gmail.com</div></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><span>📍</span></div><div><div class="contact-info-label">Service Area</div><div class="contact-info-val">York Region &amp; GTA</div><div class="contact-info-sub">Markham, Richmond Hill, Vaughan, Aurora &amp; more</div></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><span>🕐</span></div><div><div class="contact-info-label">Hours</div><div class="contact-info-val">Open 24 Hours</div><div class="contact-info-sub">365 days a year — including holidays</div></div></div>
+      </div>
+    </div>
+    <div class="contact-form-card reveal" style="transition-delay:.2s">
+      <form onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group"><label>Full Name <span>*</span></label><input type="text" placeholder="John Smith"/></div>
+          <div class="form-group"><label>Phone Number <span>*</span></label><input type="tel" placeholder="(647) 000-0000"/></div>
+        </div>
+        <div class="form-group"><label>Email Address <span>*</span></label><input type="email" placeholder="you@example.com"/></div>
+        <div class="form-group"><label>Service Needed <span>*</span></label>
+          <select><option value="">Select a service...</option><option>🚨 24/7 Emergency Repair</option><option>🔥 Furnace Installation / Repair</option><option>❄️ Air Conditioning Installation / Repair</option><option>♻️ Heat Pump Service</option><option>💧 Water Heater Service</option><option>🔧 Maintenance &amp; Tune-Up</option><option>💨 Indoor Air Quality</option><option>❓ Other / Not Sure</option></select>
+        </div>
+        <div class="form-group"><label>Tell Us About Your Needs</label><textarea placeholder="Describe your issue or what you need..."></textarea></div>
+        <button type="submit" class="btn-submit">Request My Free Quote</button>
+        <p class="form-note">We respond within 30 minutes during business hours — and 24/7 for emergencies</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text">Mahli Heating &amp; Cooling 24/7</div>
+        <p>York Region's trusted HVAC experts. Available 24/7, 365 days a year. Fast, professional service when you need it most.</p>
+        <a href="tel:6475629654" class="footer-phone">(647) 562-9654</a>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Heating &amp; Furnace</a></li><li><a href="#services">Air Conditioning</a></li><li><a href="#services">Water Heater</a></li><li><a href="#services">Indoor Air Quality</a></li><li><a href="#services">Ductwork &amp; Gas</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#why">Why Choose Us</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#plans">Plans &amp; Financing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Service Area</h4><ul><li><a href="#service-area">Markham</a></li><li><a href="#service-area">Richmond Hill</a></li><li><a href="#service-area">Vaughan</a></li><li><a href="#service-area">Aurora</a></li><li><a href="#service-area">Newmarket</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Mahli Heating &amp; Cooling 24/7. All rights reserved. Licensed &amp; Insured in Ontario · TSSA-Certified</p>
+      <p>📞 <a href="tel:6475629654" style="color:#16a34a;text-decoration:none;">(647) 562-9654</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn){btn.parentElement.classList.toggle('open');}
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  function spawnEmbers(id,n,colors){
+    const c=document.getElementById(id);if(!c)return;
+    for(let i=0;i<n;i++){
+      const e=document.createElement('div');e.className='ember';
+      const col=colors[Math.floor(Math.random()*colors.length)];const sz=2+Math.random()*4;
+      e.style.cssText=`left:${Math.random()*100}%;bottom:${Math.random()*15}%;width:${sz}px;height:${sz}px;background:${col};box-shadow:0 0 6px ${col};--dur:${3+Math.random()*4}s;--del:${Math.random()*5}s;--ex:${(Math.random()-.5)*45}px;`;
+      c.appendChild(e);
+    }
+  }
+  spawnEmbers('embers',18,['#f9a8d4','#fcd34d','#86efac','#fff']);
+  spawnEmbers('embers2',14,['#f9a8d4','#fcd34d','#fdba74']);
+  document.querySelectorAll('[data-tilt]').forEach(card=>{
+    const wrap=card.closest('.tilt-wrap');
+    wrap.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(900px) rotateY(${x*12}deg) rotateX(${-y*12}deg) translateZ(8px)`;
+    });
+    wrap.addEventListener('mouseleave',()=>{card.style.transform='perspective(900px) rotateY(0) rotateX(0) translateZ(0)';});
+  });
+</script>
+</body>
+</html>

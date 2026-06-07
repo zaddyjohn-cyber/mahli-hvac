@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:mahli-heating-cooling-247.landingsite.dev)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "mcp__Claude_in_Chrome__get_page_text",
+      "mcp__Claude_in_Chrome__computer",
+      "Bash(Get-ChildItem -Recurse \"C:\\\\Users\\\\Johno\\\\Downloads\\\\mahliheatingandcooling \\(3\\)\" -Include \"*.jpg\",\"*.jpeg\",\"*.png\",\"*.webp\",\"*.svg\",\"*.gif\",\"*.mp4\",\"*.mov\",\"*.avif\")",
+      "Bash(Select-Object FullName, Length)",
+      "Bash(Sort-Object Length -Descending)",
+      "mcp__Claude_in_Chrome__navigate",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} -> %{redirect_url}\\\\n\" \"https://loremflickr.com/600/400/airconditioner?lock=320\" --max-time 15)",
+      "Bash(sed -i 's#\\\\.\\\\./mahliheatingandcooling \\(3\\)/mahli-site/assets/#assets/#g' index.html)",
+      "Read(//c/c/Users/Johno/Downloads/MHALIHEATING/**)"
+    ]
+  }
+}
