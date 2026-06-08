@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zaddyjohn-cyber.github.io/mahli-hvac/sitemap.xml
