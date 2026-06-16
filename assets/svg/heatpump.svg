@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+<defs>
+<linearGradient id="hb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EEF3F0"/><stop offset="1" stop-color="#D8E6DD"/></linearGradient>
+<linearGradient id="hu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D5DDE5"/></linearGradient>
+</defs>
+<style>.fan{transform-origin:200px 132px;animation:fr 3s linear infinite}@keyframes fr{to{transform:rotate(360deg)}}
+.up{animation:ua 2.4s ease-in-out infinite}@keyframes ua{0%,100%{opacity:.3}50%{opacity:1}}</style>
+<rect width="400" height="250" fill="url(#hb)"/>
+<rect x="116" y="74" width="168" height="120" rx="14" fill="url(#hu)" stroke="#94A3B8" stroke-width="2"/>
+<rect x="116" y="74" width="168" height="24" rx="14" fill="#EDF1F5"/>
+<circle cx="200" cy="132" r="46" fill="#475569"/>
+<circle cx="200" cy="132" r="46" fill="none" stroke="#334155" stroke-width="3"/>
+<g class="fan"><g fill="#64748B"><path d="M200 132 V90 q14 12 0 42z"/><path d="M200 132 36 -22 q-8 18 -36 22z" transform="translate(0 0)"/></g>
+<g fill="#64748B"><path d="M200 132 L236 110 q-6 20 -36 22z"/><path d="M200 132 L236 154 q-20 8 -36 -22z"/><path d="M200 132 L164 154 q-8 -20 36 -22z"/><path d="M200 132 L164 110 q20 -8 36 22z"/></g></g>
+<circle cx="200" cy="132" r="8" fill="#1E293B"/>
+<g class="up"><path d="M300 90 v-30 m-9 12 l9 -12 9 12" fill="none" stroke="#E5664A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="up" style="animation-delay:1.2s"><path d="M300 168 v30 m-9 -12 l9 12 9 -12" fill="none" stroke="#3B82F6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

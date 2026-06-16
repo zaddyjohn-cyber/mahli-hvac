@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+<defs>
+<linearGradient id="fb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFEAD9"/><stop offset="1" stop-color="#F8C9A8"/></linearGradient>
+<linearGradient id="unit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F5F9"/><stop offset="1" stop-color="#CBD5E1"/></linearGradient>
+<radialGradient id="fl" cx="0.5" cy="0.8" r="0.6"><stop offset="0" stop-color="#FFF1C2"/><stop offset="0.4" stop-color="#FF9A3D"/><stop offset="1" stop-color="#E5664A"/></radialGradient>
+</defs>
+<style>.flame{transform-origin:200px 168px;animation:fk 1.6s ease-in-out infinite}@keyframes fk{0%,100%{transform:scaleY(1) scaleX(1)}50%{transform:scaleY(1.12) scaleX(.94)}}
+.glo{animation:gw 2s ease-in-out infinite}@keyframes gw{0%,100%{opacity:.4}50%{opacity:.8}}</style>
+<rect width="400" height="250" fill="url(#fb)"/>
+<rect x="130" y="58" width="140" height="150" rx="12" fill="url(#unit)" stroke="#94A3B8" stroke-width="2"/>
+<rect x="130" y="58" width="140" height="30" rx="12" fill="#E2E8F0"/>
+<rect x="148" y="104" width="104" height="86" rx="8" fill="#2A1F1A"/>
+<ellipse class="glo" cx="200" cy="168" rx="46" ry="40" fill="#FF9A3D" opacity=".5"/>
+<path class="flame" d="M200 196 q-26 -22 -10 -52 q-2 14 10 8 q-4 18 12 10 q4 16 -6 22 q12 12 -16 12 q-14 0 -16 -10 q-6 -14 12 -22 q-8 16 14 14z" fill="url(#fl)"/>
+<circle cx="150" cy="73" r="4" fill="#C9A961"/><circle cx="250" cy="73" r="4" fill="#C9A961"/>
+</svg>
