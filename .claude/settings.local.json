@@ -38,7 +38,12 @@
       "Bash(rm -f _frame.jpg)",
       "Bash(python -m http.server 8765 --bind 127.0.0.1)",
       "Bash(curl -s -o /dev/null -w \"server: %{http_code}\\\\n\" http://127.0.0.1:8765/index.html --max-time 10)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(mv mahlvd.mp4 assets/vid/minisplit.mp4)",
+      "Bash(mv vdmah.mp4 assets/vid/coilwash.mp4)",
+      "Bash(mv vidmahl.mp4 assets/vid/deepclean.mp4)",
+      "Bash(mv \"_pf_mahlvd.mp4.jpg\" assets/img/poster-minisplit.jpg)",
+      "Bash(mv \"_pf_vdmah.mp4.jpg\" assets/img/poster-coilwash.jpg)"
     ]
   }
 }
