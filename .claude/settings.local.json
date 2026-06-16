@@ -43,7 +43,10 @@
       "Bash(mv vdmah.mp4 assets/vid/coilwash.mp4)",
       "Bash(mv vidmahl.mp4 assets/vid/deepclean.mp4)",
       "Bash(mv \"_pf_mahlvd.mp4.jpg\" assets/img/poster-minisplit.jpg)",
-      "Bash(mv \"_pf_vdmah.mp4.jpg\" assets/img/poster-coilwash.jpg)"
+      "Bash(mv \"_pf_vdmah.mp4.jpg\" assets/img/poster-coilwash.jpg)",
+      "Bash(ffmpeg -y -loglevel error -i assets/vid/install.mp4 -ss 15 -vframes 1 assets/img/real-install3.jpg)",
+      "Bash(ffmpeg -y -loglevel error -i assets/vid/install.mp4 -ss 33 -vframes 1 assets/img/real-gas.jpg)",
+      "Bash(ffmpeg -y -loglevel error -i assets/vid/coilwash.mp4 -ss 12 -vframes 1 assets/img/real-coil2.jpg)"
     ]
   }
 }
