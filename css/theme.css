@@ -1676,3 +1676,29 @@ p { margin-bottom: 1rem; color: var(--c-ink-soft); }
 .emerg-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem;background:linear-gradient(135deg,#2A1F1A,#4A2F25);color:#fff;border-radius:var(--r-lg);padding:1.1rem 1.5rem;text-align:center;box-shadow:var(--sh-deep);}
 .emerg-bar strong{color:#fff;font-family:var(--serif);font-size:1.15rem;font-weight:600;}
 .emerg-bar .ico{width:40px;height:40px;border-radius:50%;background:rgba(255,140,110,.2);display:flex;align-items:center;justify-content:center;color:var(--c-coral);}
+
+/* ============================================================
+   HERO LOGO — blinking + color-cycling glow (brand centerpiece)
+   ============================================================ */
+.osw-product.logo-hero {
+  background: radial-gradient(circle at 50% 38%, #20344e 0%, #0c1722 70%, #060d14 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 8%;
+  animation: floatY 6.5s ease-in-out infinite, logoAura 5s ease-in-out infinite;
+}
+.osw-product.logo-hero img {
+  width: 100%; height: auto; object-fit: contain;
+  animation: logoBlink 2.4s ease-in-out infinite;
+}
+@keyframes logoAura {
+  0%, 100% { box-shadow: 0 0 38px rgba(34,211,238,.55), 0 0 90px rgba(34,211,238,.22), var(--sh-product); }
+  33%      { box-shadow: 0 0 52px rgba(249,115,22,.6),  0 0 110px rgba(249,115,22,.26), var(--sh-product); }
+  66%      { box-shadow: 0 0 52px rgba(59,130,246,.6),  0 0 110px rgba(59,130,246,.26), var(--sh-product); }
+}
+@keyframes logoBlink {
+  0%, 100% { filter: brightness(1)   drop-shadow(0 0 4px rgba(255,150,50,0)); }
+  50%      { filter: brightness(1.16) drop-shadow(0 0 12px rgba(255,150,50,.55)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .osw-product.logo-hero, .osw-product.logo-hero img { animation: none; }
+}
